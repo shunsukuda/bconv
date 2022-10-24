@@ -5,7 +5,7 @@ import (
 	"unsafe"
 )
 
-// unsafe convert Bytes to String.
+// BytesToString convert Bytes to String.
 func BytesToString(b []byte) string {
 	return *(*string)(unsafe.Pointer(
 		&reflect.StringHeader{
@@ -14,7 +14,7 @@ func BytesToString(b []byte) string {
 		}))
 }
 
-// unsafe convert String to Bytes.
+// StringToBytes convert String to Bytes.
 func StringToBytes(s string) []byte {
 	return *(*[]byte)(unsafe.Pointer(
 		&reflect.SliceHeader{
