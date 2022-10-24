@@ -1,6 +1,7 @@
 package bconv
 
 import (
+	"math"
 	"reflect"
 	"testing"
 )
@@ -14,7 +15,7 @@ func TestUint8ToInt8(t *testing.T) {
 		args args
 		want int8
 	}{
-		{name: "", args: args{v: 255}, want: -1},
+		{name: "", args: args{v: math.MaxUint8}, want: -1},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -34,7 +35,7 @@ func TestUint8SliceToInt8Slice(t *testing.T) {
 		args args
 		want []int8
 	}{
-		{name: "", args: args{v: []uint8{255, 254, 253}}, want: []int8{-1, -2, -3}},
+		{name: "", args: args{v: []uint8{math.MaxUint8, math.MaxUint8 - 1, math.MaxUint8 - 2}}, want: []int8{-1, -2, -3}},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -54,7 +55,7 @@ func TestInt8ToUint8(t *testing.T) {
 		args args
 		want uint8
 	}{
-		{name: "", args: args{v: -1}, want: 255},
+		{name: "", args: args{v: -1}, want: math.MaxUint8},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -74,7 +75,7 @@ func TestInt8SliceToUint8Slice(t *testing.T) {
 		args args
 		want []uint8
 	}{
-		{name: "", args: args{v: []int8{-1, -2, -3}}, want: []uint8{255, 254, 253}},
+		{name: "", args: args{v: []int8{-1, -2, -3}}, want: []uint8{math.MaxUint8, math.MaxUint8 - 1, math.MaxUint8 - 2}},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
