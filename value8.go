@@ -5,13 +5,13 @@ import (
 	"unsafe"
 )
 
-// Uint8ToInt8 convert uint8 to int8.
-func Uint8ToInt8(v uint8) int8 {
+// U8ToI8 convert uint8 to int8.
+func U8ToI8(v uint8) int8 {
 	return *(*int8)(unsafe.Pointer(&v))
 }
 
-// Uint8SliceToInt8Slice convert []uint8 to []int8.
-func Uint8SliceToInt8Slice(v []uint8) []int8 {
+// U8sToI8s convert []uint8 to []int8.
+func U8sToI8s(v []uint8) []int8 {
 	return *(*[]int8)(unsafe.Pointer(
 		&reflect.SliceHeader{
 			Data: (*reflect.SliceHeader)(unsafe.Pointer(&v)).Data,
@@ -20,13 +20,13 @@ func Uint8SliceToInt8Slice(v []uint8) []int8 {
 		}))
 }
 
-// Int8ToUint8 convert int8 to uint8.
-func Int8ToUint8(v int8) uint8 {
+// I8ToU8 convert int8 to uint8.
+func I8ToU8(v int8) uint8 {
 	return *(*uint8)(unsafe.Pointer(&v))
 }
 
-// Int8SliceToUint8Slice convert []int8 to []uint8.
-func Int8SliceToUint8Slice(v []int8) []uint8 {
+// I8sToU8se convert []int8 to []uint8.
+func I8sToU8s(v []int8) []uint8 {
 	return *(*[]uint8)(unsafe.Pointer(
 		&reflect.SliceHeader{
 			Data: (*reflect.SliceHeader)(unsafe.Pointer(&v)).Data,

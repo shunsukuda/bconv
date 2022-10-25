@@ -5,13 +5,13 @@ import (
 	"unsafe"
 )
 
-// Uint32ToInt32 convert uint32 to int32.
-func Uint32ToInt32(v uint32) int32 {
+// U32ToInt32 convert uint32 to int32.
+func U32ToInt32(v uint32) int32 {
 	return *(*int32)(unsafe.Pointer(&v))
 }
 
-// Uint32SliceToInt32Slice convert []uint32 to []int32.
-func Uint32SliceToInt32Slice(v []uint32) []int32 {
+// U32sToI32s convert []uint32 to []int32.
+func U32sToI32s(v []uint32) []int32 {
 	return *(*[]int32)(unsafe.Pointer(
 		&reflect.SliceHeader{
 			Data: (*reflect.SliceHeader)(unsafe.Pointer(&v)).Data,
@@ -20,13 +20,13 @@ func Uint32SliceToInt32Slice(v []uint32) []int32 {
 		}))
 }
 
-// Uint32ToFloat32 convert uint32 to float32.
-func Uint32ToFloat32(v uint32) float32 {
+// U32ToF32 convert uint32 to float32.
+func U32ToF32(v uint32) float32 {
 	return *(*float32)(unsafe.Pointer(&v))
 }
 
-// Uint32SliceToFloat32Slice convert []uint32 to []float32.
-func Uint32SliceToFloat32Slice(v []uint32) []float32 {
+// U32sToF32s convert []uint32 to []float32.
+func U32sToF32s(v []uint32) []float32 {
 	return *(*[]float32)(unsafe.Pointer(
 		&reflect.SliceHeader{
 			Data: (*reflect.SliceHeader)(unsafe.Pointer(&v)).Data,
@@ -35,13 +35,13 @@ func Uint32SliceToFloat32Slice(v []uint32) []float32 {
 		}))
 }
 
-// Int32ToUint32 convert int32 to uint32.
-func Int32ToUint32(v int32) uint32 {
+// I32ToU32 convert int32 to uint32.
+func I32ToU32(v int32) uint32 {
 	return *(*uint32)(unsafe.Pointer(&v))
 }
 
-// Int32SliceToUint32Slice convert []int32 to []uint32.
-func Int32SliceToUint32Slice(v []int32) []uint32 {
+// I32sToU32s convert []int32 to []uint32.
+func I32sToU32s(v []int32) []uint32 {
 	return *(*[]uint32)(unsafe.Pointer(
 		&reflect.SliceHeader{
 			Data: (*reflect.SliceHeader)(unsafe.Pointer(&v)).Data,
@@ -50,13 +50,13 @@ func Int32SliceToUint32Slice(v []int32) []uint32 {
 		}))
 }
 
-// Float32ToUint32 convert float32 to uint32.
-func Float32ToUint32(v float32) uint32 {
+// F32ToU32 convert float32 to uint32.
+func F32ToU32(v float32) uint32 {
 	return *(*uint32)(unsafe.Pointer(&v))
 }
 
-// Float32SliceToUint32Slice convert []float32 to []uint32.
-func Float32SliceToUint32Slice(v []float32) []uint32 {
+// F32sToU32s convert []float32 to []uint32.
+func F32sToU32s(v []float32) []uint32 {
 	return *(*[]uint32)(unsafe.Pointer(
 		&reflect.SliceHeader{
 			Data: (*reflect.SliceHeader)(unsafe.Pointer(&v)).Data,

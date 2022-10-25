@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-func TestUint16ToInt16(t *testing.T) {
+func TestU16ToI16(t *testing.T) {
 	type args struct {
 		v uint16
 	}
@@ -19,14 +19,14 @@ func TestUint16ToInt16(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := Uint16ToInt16(tt.args.v); got != tt.want {
-				t.Errorf("Uint16ToInt16() = %v, want %v", got, tt.want)
+			if got := U16ToI16(tt.args.v); got != tt.want {
+				t.Errorf("U16ToI16() = %v, want %v", got, tt.want)
 			}
 		})
 	}
 }
 
-func TestUint16SliceToInt16Slice(t *testing.T) {
+func TestU16sToI16s(t *testing.T) {
 	type args struct {
 		v []uint16
 	}
@@ -39,14 +39,14 @@ func TestUint16SliceToInt16Slice(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := Uint16SliceToInt16Slice(tt.args.v); !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("Uint16SliceToInt16Slice() = %v, want %v", got, tt.want)
+			if got := U16sToI16s(tt.args.v); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("U16sToI16s() = %v, want %v", got, tt.want)
 			}
 		})
 	}
 }
 
-func TestInt16ToUint16(t *testing.T) {
+func TestI16ToU16(t *testing.T) {
 	type args struct {
 		v int16
 	}
@@ -59,14 +59,14 @@ func TestInt16ToUint16(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := Int16ToUint16(tt.args.v); got != tt.want {
-				t.Errorf("Int16ToUint16() = %v, want %v", got, tt.want)
+			if got := I16ToU16(tt.args.v); got != tt.want {
+				t.Errorf("I16ToU16() = %v, want %v", got, tt.want)
 			}
 		})
 	}
 }
 
-func TestInt16SliceToUint16Slice(t *testing.T) {
+func TestI16sToU16s(t *testing.T) {
 	type args struct {
 		v []int16
 	}
@@ -79,8 +79,8 @@ func TestInt16SliceToUint16Slice(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := Int16SliceToUint16Slice(tt.args.v); !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("Int16SliceToUint16Slice() = %v, want %v", got, tt.want)
+			if got := I16sToU16s(tt.args.v); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("I16sToU16s() = %v, want %v", got, tt.want)
 			}
 		})
 	}

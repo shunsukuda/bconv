@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-func TestUint8ToInt8(t *testing.T) {
+func TestU8ToI8(t *testing.T) {
 	type args struct {
 		v uint8
 	}
@@ -19,14 +19,14 @@ func TestUint8ToInt8(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := Uint8ToInt8(tt.args.v); got != tt.want {
-				t.Errorf("Uint8ToInt8() = %v, want %v", got, tt.want)
+			if got := U8ToI8(tt.args.v); got != tt.want {
+				t.Errorf("U8ToI8() = %v, want %v", got, tt.want)
 			}
 		})
 	}
 }
 
-func TestUint8SliceToInt8Slice(t *testing.T) {
+func TestU8sToI8s(t *testing.T) {
 	type args struct {
 		v []uint8
 	}
@@ -39,14 +39,14 @@ func TestUint8SliceToInt8Slice(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := Uint8SliceToInt8Slice(tt.args.v); !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("Uint8SliceToInt8Slice() = %v, want %v", got, tt.want)
+			if got := U8sToI8s(tt.args.v); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("U8sToI8s() = %v, want %v", got, tt.want)
 			}
 		})
 	}
 }
 
-func TestInt8ToUint8(t *testing.T) {
+func TestI8ToU8(t *testing.T) {
 	type args struct {
 		v int8
 	}
@@ -59,14 +59,14 @@ func TestInt8ToUint8(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := Int8ToUint8(tt.args.v); got != tt.want {
-				t.Errorf("Int8ToUint8() = %v, want %v", got, tt.want)
+			if got := I8ToU8(tt.args.v); got != tt.want {
+				t.Errorf("I8ToU8() = %v, want %v", got, tt.want)
 			}
 		})
 	}
 }
 
-func TestInt8SliceToUint8Slice(t *testing.T) {
+func TestI8sToU8s(t *testing.T) {
 	type args struct {
 		v []int8
 	}
@@ -79,8 +79,8 @@ func TestInt8SliceToUint8Slice(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := Int8SliceToUint8Slice(tt.args.v); !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("Int8SliceToUint8Slice() = %v, want %v", got, tt.want)
+			if got := I8sToU8s(tt.args.v); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("I8sToU8s() = %v, want %v", got, tt.want)
 			}
 		})
 	}

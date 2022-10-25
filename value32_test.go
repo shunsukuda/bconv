@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-func TestUint32ToInt32(t *testing.T) {
+func TestU32ToInt32(t *testing.T) {
 	type args struct {
 		v uint32
 	}
@@ -19,14 +19,14 @@ func TestUint32ToInt32(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := Uint32ToInt32(tt.args.v); got != tt.want {
-				t.Errorf("Uint32ToInt32() = %v, want %v", got, tt.want)
+			if got := U32ToInt32(tt.args.v); got != tt.want {
+				t.Errorf("U32ToInt32() = %v, want %v", got, tt.want)
 			}
 		})
 	}
 }
 
-func TestUint32SliceToInt32Slice(t *testing.T) {
+func TestU32sToI32s(t *testing.T) {
 	type args struct {
 		v []uint32
 	}
@@ -39,14 +39,14 @@ func TestUint32SliceToInt32Slice(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := Uint32SliceToInt32Slice(tt.args.v); !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("Uint32SliceToInt32Slice() = %v, want %v", got, tt.want)
+			if got := U32sToI32s(tt.args.v); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("U32sToI32s() = %v, want %v", got, tt.want)
 			}
 		})
 	}
 }
 
-func TestUint32ToFloat32(t *testing.T) {
+func TestU32ToF32(t *testing.T) {
 	type args struct {
 		v uint32
 	}
@@ -59,14 +59,14 @@ func TestUint32ToFloat32(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := Uint32ToFloat32(tt.args.v); got != tt.want {
-				t.Errorf("Uint32ToFloat32() = %v, want %v", got, tt.want)
+			if got := U32ToF32(tt.args.v); got != tt.want {
+				t.Errorf("U32ToF32() = %v, want %v", got, tt.want)
 			}
 		})
 	}
 }
 
-func TestUint32SliceToFloat32Slice(t *testing.T) {
+func TestU32sToF32s(t *testing.T) {
 	type args struct {
 		v []uint32
 	}
@@ -79,14 +79,14 @@ func TestUint32SliceToFloat32Slice(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := Uint32SliceToFloat32Slice(tt.args.v); !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("Uint32SliceToFloat32Slice() = %v, want %v", got, tt.want)
+			if got := U32sToF32s(tt.args.v); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("U32sToF32s() = %v, want %v", got, tt.want)
 			}
 		})
 	}
 }
 
-func TestInt32ToUint32(t *testing.T) {
+func TestI32ToU32(t *testing.T) {
 	type args struct {
 		v int32
 	}
@@ -99,14 +99,14 @@ func TestInt32ToUint32(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := Int32ToUint32(tt.args.v); got != tt.want {
-				t.Errorf("Int32ToUint32() = %v, want %v", got, tt.want)
+			if got := I32ToU32(tt.args.v); got != tt.want {
+				t.Errorf("I32ToU32() = %v, want %v", got, tt.want)
 			}
 		})
 	}
 }
 
-func TestInt32SliceToUint32Slice(t *testing.T) {
+func TestI32sToU32s(t *testing.T) {
 	type args struct {
 		v []int32
 	}
@@ -119,14 +119,14 @@ func TestInt32SliceToUint32Slice(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := Int32SliceToUint32Slice(tt.args.v); !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("Int32SliceToUint32Slice() = %v, want %v", got, tt.want)
+			if got := I32sToU32s(tt.args.v); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("I32sToU32s() = %v, want %v", got, tt.want)
 			}
 		})
 	}
 }
 
-func TestFloat32ToUint32(t *testing.T) {
+func TestF32ToU32(t *testing.T) {
 	type args struct {
 		v float32
 	}
@@ -139,14 +139,14 @@ func TestFloat32ToUint32(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := Float32ToUint32(tt.args.v); got != tt.want {
-				t.Errorf("Float32ToUint32() = %v, want %v", got, tt.want)
+			if got := F32ToU32(tt.args.v); got != tt.want {
+				t.Errorf("F32ToU32() = %v, want %v", got, tt.want)
 			}
 		})
 	}
 }
 
-func TestFloat32SliceToUint32Slice(t *testing.T) {
+func TestF32sToU32s(t *testing.T) {
 	type args struct {
 		v []float32
 	}
@@ -159,8 +159,8 @@ func TestFloat32SliceToUint32Slice(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := Float32SliceToUint32Slice(tt.args.v); !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("Float32SliceToUint32Slice() = %v, want %v", got, tt.want)
+			if got := F32sToU32s(tt.args.v); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("F32sToU32s() = %v, want %v", got, tt.want)
 			}
 		})
 	}

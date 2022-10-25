@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-func TestUint64ToInt64(t *testing.T) {
+func TestU64ToI64(t *testing.T) {
 	type args struct {
 		v uint64
 	}
@@ -19,14 +19,14 @@ func TestUint64ToInt64(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := Uint64ToInt64(tt.args.v); got != tt.want {
-				t.Errorf("Uint64ToInt64() = %v, want %v", got, tt.want)
+			if got := U64ToI64(tt.args.v); got != tt.want {
+				t.Errorf("U64ToI64() = %v, want %v", got, tt.want)
 			}
 		})
 	}
 }
 
-func TestUint64SliceToInt64Slice(t *testing.T) {
+func TestU64sToI64s(t *testing.T) {
 	type args struct {
 		v []uint64
 	}
@@ -39,14 +39,14 @@ func TestUint64SliceToInt64Slice(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := Uint64SliceToInt64Slice(tt.args.v); !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("Uint64SliceToInt64Slice() = %v, want %v", got, tt.want)
+			if got := U64sToI64s(tt.args.v); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("U64sToI64s() = %v, want %v", got, tt.want)
 			}
 		})
 	}
 }
 
-func TestUint64ToFloat64(t *testing.T) {
+func TestU64ToF64(t *testing.T) {
 	type args struct {
 		v uint64
 	}
@@ -59,14 +59,14 @@ func TestUint64ToFloat64(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := Uint64ToFloat64(tt.args.v); got != tt.want {
-				t.Errorf("Uint64ToFloat64() = %v, want %v", got, tt.want)
+			if got := U64ToF64(tt.args.v); got != tt.want {
+				t.Errorf("U64ToF64() = %v, want %v", got, tt.want)
 			}
 		})
 	}
 }
 
-func TestUint64SliceToFloat64Slice(t *testing.T) {
+func TestU64sToF64s(t *testing.T) {
 	type args struct {
 		v []uint64
 	}
@@ -79,14 +79,14 @@ func TestUint64SliceToFloat64Slice(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := Uint64SliceToFloat64Slice(tt.args.v); !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("Uint64SliceToFloat64Slice() = %v, want %v", got, tt.want)
+			if got := U64sToF64s(tt.args.v); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("U64sToF64s() = %v, want %v", got, tt.want)
 			}
 		})
 	}
 }
 
-func TestInt64ToUint64(t *testing.T) {
+func TestI64ToU64(t *testing.T) {
 	type args struct {
 		v int64
 	}
@@ -99,14 +99,14 @@ func TestInt64ToUint64(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := Int64ToUint64(tt.args.v); got != tt.want {
-				t.Errorf("Int64ToUint64() = %v, want %v", got, tt.want)
+			if got := I64ToU64(tt.args.v); got != tt.want {
+				t.Errorf("I64ToU64() = %v, want %v", got, tt.want)
 			}
 		})
 	}
 }
 
-func TestInt64SliceToUint64Slice(t *testing.T) {
+func TestI64sToU64s(t *testing.T) {
 	type args struct {
 		v []int64
 	}
@@ -119,14 +119,14 @@ func TestInt64SliceToUint64Slice(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := Int64SliceToUint64Slice(tt.args.v); !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("Int64SliceToUint64Slice() = %v, want %v", got, tt.want)
+			if got := I64sToU64s(tt.args.v); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("I64sToU64s() = %v, want %v", got, tt.want)
 			}
 		})
 	}
 }
 
-func TestFloat64ToUint64(t *testing.T) {
+func TestF64ToU64(t *testing.T) {
 	type args struct {
 		v float64
 	}
@@ -139,14 +139,14 @@ func TestFloat64ToUint64(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := Float64ToUint64(tt.args.v); got != tt.want {
-				t.Errorf("Float64ToUint64() = %v, want %v", got, tt.want)
+			if got := F64ToU64(tt.args.v); got != tt.want {
+				t.Errorf("F64ToU64() = %v, want %v", got, tt.want)
 			}
 		})
 	}
 }
 
-func TestFloat64SliceToUint64Slice(t *testing.T) {
+func TestF64sToU64s(t *testing.T) {
 	type args struct {
 		v []float64
 	}
@@ -159,8 +159,8 @@ func TestFloat64SliceToUint64Slice(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := Float64SliceToUint64Slice(tt.args.v); !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("Float64SliceToUint64Slice() = %v, want %v", got, tt.want)
+			if got := F64sToU64s(tt.args.v); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("F64sToU64s() = %v, want %v", got, tt.want)
 			}
 		})
 	}
