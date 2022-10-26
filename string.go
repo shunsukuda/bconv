@@ -5,8 +5,6 @@ import (
 	"unsafe"
 )
 
-type Binary []byte
-
 // BinToStr convert Binary to String.
 func BinToStr(b Binary) string {
 	return *(*string)(unsafe.Pointer(
