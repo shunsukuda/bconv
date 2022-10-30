@@ -1,141 +1,10 @@
 package bconv
 
 import (
+	"bytes"
 	"reflect"
 	"testing"
 )
-
-func TestBinLEToU16(t *testing.T) {
-	type args struct {
-		b Binary
-	}
-	tests := []struct {
-		name string
-		args args
-		want uint16
-	}{
-		{name: "", args: args{b: nil}, want: 0x0},
-		{name: "", args: args{b: Binary{0x12}}, want: 0x0},
-		{name: "", args: args{b: Binary{0x12, 0x34}}, want: 0x3412},
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			if got := BinLEToU16(tt.args.b); got != tt.want {
-				t.Errorf("BinLEToU16() = 0x%x, want 0x%x", got, tt.want)
-			}
-		})
-	}
-}
-
-func TestBinBEToU16(t *testing.T) {
-	type args struct {
-		b Binary
-	}
-	tests := []struct {
-		name string
-		args args
-		want uint16
-	}{
-		{name: "", args: args{b: nil}, want: 0x0},
-		{name: "", args: args{b: Binary{0x12}}, want: 0x0},
-		{name: "", args: args{b: Binary{0x12, 0x34}}, want: 0x1234},
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			if got := BinBEToU16(tt.args.b); got != tt.want {
-				t.Errorf("BinBEToU16() = 0x%x, want 0x%x", got, tt.want)
-			}
-		})
-	}
-}
-
-func TestBinLEToU32(t *testing.T) {
-	type args struct {
-		b Binary
-	}
-	tests := []struct {
-		name string
-		args args
-		want uint32
-	}{
-		{name: "", args: args{b: nil}, want: 0x0},
-		{name: "", args: args{b: Binary{0x12, 0x34, 0x56}}, want: 0x0},
-		{name: "", args: args{b: Binary{0x12, 0x34, 0x56, 0x78}}, want: 0x78563412},
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			if got := BinLEToU32(tt.args.b); got != tt.want {
-				t.Errorf("BinLEToU32() = 0x%x, want 0x%x", got, tt.want)
-			}
-		})
-	}
-}
-
-func TestBinBEToU32(t *testing.T) {
-	type args struct {
-		b Binary
-	}
-	tests := []struct {
-		name string
-		args args
-		want uint32
-	}{
-		{name: "", args: args{b: nil}, want: 0x0},
-		{name: "", args: args{b: Binary{0x12, 0x34, 0x56}}, want: 0x0},
-		{name: "", args: args{b: Binary{0x12, 0x34, 0x56, 0x78}}, want: 0x12345678},
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			if got := BinBEToU32(tt.args.b); got != tt.want {
-				t.Errorf("BinBEToU32() = 0x%x, want 0x%x", got, tt.want)
-			}
-		})
-	}
-}
-
-func TestBinLEToU64(t *testing.T) {
-	type args struct {
-		b Binary
-	}
-	tests := []struct {
-		name string
-		args args
-		want uint64
-	}{
-		{name: "", args: args{b: nil}, want: 0x0},
-		{name: "", args: args{b: Binary{0x12, 0x34, 0x56, 0x78, 0x9a, 0xbc, 0xde}}, want: 0x0},
-		{name: "", args: args{b: Binary{0x12, 0x34, 0x56, 0x78, 0x9a, 0xbc, 0xde, 0xf0}}, want: 0xf0debc9a78563412},
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			if got := BinLEToU64(tt.args.b); got != tt.want {
-				t.Errorf("BinLEToU64() = 0x%x, want 0x%x", got, tt.want)
-			}
-		})
-	}
-}
-
-func TestBinBEToU64(t *testing.T) {
-	type args struct {
-		b Binary
-	}
-	tests := []struct {
-		name string
-		args args
-		want uint64
-	}{
-		{name: "", args: args{b: nil}, want: 0x0},
-		{name: "", args: args{b: Binary{0x12, 0x34, 0x56, 0x78, 0x9a, 0xbc, 0xde}}, want: 0x0},
-		{name: "", args: args{b: Binary{0x12, 0x34, 0x56, 0x78, 0x9a, 0xbc, 0xde, 0xf0}}, want: 0x123456789abcdef0},
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			if got := BinBEToU64(tt.args.b); got != tt.want {
-				t.Errorf("BinBEToU64() = 0x%x, want 0x%x", got, tt.want)
-			}
-		})
-	}
-}
 
 func TestBinToU16s(t *testing.T) {
 	type args struct {
@@ -223,7 +92,7 @@ func TestBinToI16s(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := BinToI16s(tt.args.b); !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("BinToI16s() = %v, want %v", got, tt.want)
+				t.Errorf("BinToI16s() = 0x%x, want 0x%x", got, tt.want)
 			}
 		})
 	}
@@ -246,7 +115,7 @@ func TestBinToI32s(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := BinToI32s(tt.args.b); !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("BinToI32s() = %v, want %v", got, tt.want)
+				t.Errorf("BinToI32s() = 0x%x, want 0x%x", got, tt.want)
 			}
 		})
 	}
@@ -269,7 +138,7 @@ func TestBinToI64s(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := BinToI64s(tt.args.b); !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("BinToI64s() = %v, want %v", got, tt.want)
+				t.Errorf("BinToI64s() = 0x%x, want 0x%x", got, tt.want)
 			}
 		})
 	}
@@ -292,7 +161,7 @@ func TestBinToF32s(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := BinToF32s(tt.args.b); !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("BinToF32s() = %v, want %v", got, tt.want)
+				t.Errorf("BinToF32s() = 0x%x, want 0x%x", got, tt.want)
 			}
 		})
 	}
@@ -315,127 +184,70 @@ func TestBinToF64s(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := BinToF64s(tt.args.b); !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("BinToF64s() = %v, want %v", got, tt.want)
+				t.Errorf("BinToF64s() = 0x%x, want 0x%x", got, tt.want)
 			}
 		})
 	}
 }
 
-func TestU16ToBinLE(t *testing.T) {
+func TestU16sToBin(t *testing.T) {
 	type args struct {
-		v uint16
+		v []uint16
 	}
 	tests := []struct {
 		name string
 		args args
 		want Binary
 	}{
-		{name: "", args: args{v: 0x1234}, want: Binary{0x34, 0x12}},
+		{name: "", args: args{v: nil}, want: nil},
+		{name: "", args: args{v: []uint16{0xffff}}, want: Binary{0xff, 0xff}},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := U16ToBinLE(tt.args.v); !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("U16ToBinLE() = 0x%x, want 0x%x", got, tt.want)
+			if got := U16sToBin(tt.args.v); !bytes.Equal(got, tt.want) {
+				t.Errorf("U16sToBin() = 0x%x, want 0x%x", got, tt.want)
 			}
 		})
 	}
 }
 
-func TestU16ToBinBE(t *testing.T) {
+func TestU32sToBin(t *testing.T) {
 	type args struct {
-		v uint16
+		v []uint32
 	}
 	tests := []struct {
 		name string
 		args args
 		want Binary
 	}{
-		{name: "", args: args{v: 0x1234}, want: Binary{0x12, 0x34}},
+		{name: "", args: args{v: nil}, want: nil},
+		{name: "", args: args{v: []uint32{0xffffffff}}, want: Binary{0xff, 0xff, 0xff, 0xff}},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := U16ToBinBE(tt.args.v); !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("U16ToBinBE() = 0x%x, want 0x%x", got, tt.want)
+			if got := U32sToBin(tt.args.v); !bytes.Equal(got, tt.want) {
+				t.Errorf("U32sToBin() = 0x%x, want 0x%x", got, tt.want)
 			}
 		})
 	}
 }
 
-func TestU32ToBinLE(t *testing.T) {
+func TestU64sToBin(t *testing.T) {
 	type args struct {
-		v uint32
+		v []uint64
 	}
 	tests := []struct {
 		name string
 		args args
 		want Binary
 	}{
-		{name: "", args: args{v: 0x12345678}, want: Binary{0x78, 0x56, 0x34, 0x12}},
+		{name: "", args: args{v: nil}, want: nil},
+		{name: "", args: args{v: []uint64{0xffffffffffffffff}}, want: Binary{0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff}},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := U32ToBinLE(tt.args.v); !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("U32ToBinLE() = 0x%x, want 0x%x", got, tt.want)
-			}
-		})
-	}
-}
-
-func TestU32ToBinBE(t *testing.T) {
-	type args struct {
-		v uint32
-	}
-	tests := []struct {
-		name string
-		args args
-		want Binary
-	}{
-		{name: "", args: args{v: 0x12345678}, want: Binary{0x12, 0x34, 0x56, 0x78}},
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			if got := U32ToBinBE(tt.args.v); !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("U32ToBinBE() = 0x%x, want 0x%x", got, tt.want)
-			}
-		})
-	}
-}
-
-func TestU64ToBinLE(t *testing.T) {
-	type args struct {
-		v uint64
-	}
-	tests := []struct {
-		name string
-		args args
-		want Binary
-	}{
-		{name: "", args: args{v: 0x123456789abcdef0}, want: Binary{0xf0, 0xde, 0xbc, 0x9a, 0x78, 0x56, 0x34, 0x12}},
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			if got := U64ToBinLE(tt.args.v); !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("U64ToBinLE() = 0x%x, want 0x%x", got, tt.want)
-			}
-		})
-	}
-}
-
-func TestU64ToBinBE(t *testing.T) {
-	type args struct {
-		v uint64
-	}
-	tests := []struct {
-		name string
-		args args
-		want Binary
-	}{
-		{name: "", args: args{v: 0x123456789abcdef0}, want: Binary{0x12, 0x34, 0x56, 0x78, 0x9a, 0xbc, 0xde, 0xf0}},
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			if got := U64ToBinBE(tt.args.v); !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("U64ToBinBE() = 0x%x, want 0x%x", got, tt.want)
+			if got := U64sToBin(tt.args.v); !bytes.Equal(got, tt.want) {
+				t.Errorf("U64sToBin() = 0x%x, want 0x%x", got, tt.want)
 			}
 		})
 	}
